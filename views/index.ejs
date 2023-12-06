@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column; height: 600px; justify-content: center; align-items: center;">
+
+        <div style="display: flex; width: 80%;flex-direction: column; border: solid 2px black; margin-top: 50px; padding: 30PX;">
+            <div style="display: flex; flex:1; flex-direction:row;">
+                <div style="flex: 1; text-align: center">
+                    <b>Cliente</b>
+                </div>
+                <div style="flex: 1; text-align: center">
+                    <b>Animal</b>
+                </div>
+            </div>
+            <% for (var i=0; i < clientes.length ; i++) { %>
+                <hr style="background-color: black; width: 90%;">
+                <div style="display: flex; flex:1; flex-direction:row;">
+                    <div style="flex: 1; text-align: center">
+                        <%= clientes[i].cliente %>
+                    </div>
+                    <div style="flex: 1; text-align: center">
+                        <%= clientes[i].pet %>
+                    </div>
+                </div>
+                <hr style="background-color: black; width: 90%;">
+                    <% for (var j=0; j < clientes[i].ficha.length ; j++) { %>
+                        <div style="display: flex; flex:1; flex-direction:row;">
+                            <div style="flex: 1; text-align: center">
+                                <%= new Date(clientes[i].ficha[j].data).toLocaleDateString('pt-BR', {timeZone:'UTC'}) %>
+                            </div>
+                            <div style="flex: 1; text-align: center">
+                                R$ <%= clientes[i].ficha[j].preco %>
+                            </div>
+                            
+                            <div style="flex: 1; text-align: center">
+                                <% for (var k=0; k < clientes[i].ficha[j].procedimentos.length ; k++) { %>
+                                    <%= clientes[i].ficha[j].procedimentos[k] %>,
+                                <% } %>
+                            </div>
+                        </div>
+                    <% } %>
+            <% } %>
+        </div>
+    </div>
+
+</body>
+
+</html>
